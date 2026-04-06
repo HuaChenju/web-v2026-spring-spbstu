@@ -1,5 +1,5 @@
 function findMaxSubarraySum(arr, n) {
-    if (n > arr.length || n <= 0) {
+    if (n > arr.length || n <= 0 || !Number.isInteger(n)) {
         return null;
     }
 
