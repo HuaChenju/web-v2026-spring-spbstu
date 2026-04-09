@@ -51,25 +51,36 @@ function groupByStatus(orders) {
     return result;
 }
 
-// Уникальный список всех товаров
+// Уникальный список всех товаров (Arrays)
+// function getUniqueItems(orders) {
+//     const unique = [];
+//     for (let i = 0; i < orders.length; i++) {
+//         for (let j = 0; j < orders[i].items.length; j++) {
+//             const item = orders[i].items[j];
+//             let exists = false;
+//             for (let k = 0; k < unique.length; k++) {
+//                 if (unique[k].name === item.name) {
+//                     exists = true;
+//                     break;
+//                 }
+//             }
+//             if (!exists) {
+//                 unique.push({ name: item.name, price: item.price });
+//             }
+//         }
+//     }
+//     return unique;
+// }
+
+// Уникальный список всех товаров (Set())
 function getUniqueItems(orders) {
-    const unique = [];
-    for (let i = 0; i < orders.length; i++) {
-        for (let j = 0; j < orders[i].items.length; j++) {
-            const item = orders[i].items[j];
-            let exists = false;
-            for (let k = 0; k < unique.length; k++) {
-                if (unique[k].name === item.name) {
-                    exists = true;
-                    break;
-                }
-            }
-            if (!exists) {
-                unique.push({ name: item.name, price: item.price });
-            }
+    const unique = new Set();
+    for (let order of orders) {
+        for (let item of order.items) {
+            unique.push({name: item.name, price: item.price});
         }
     }
-    return unique;
+    return [...unique];
 }
 
 // Фильтрация заказов по диапазонам суммы
