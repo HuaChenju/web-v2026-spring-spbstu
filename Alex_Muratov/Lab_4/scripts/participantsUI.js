@@ -11,7 +11,8 @@ function addParticipant() {
 
     getList()
         .then(res => {
-            const event = res.find(event => event.id === window.currentCardId);
+            const event = res.find(event => event.id === +window.currentCardId);
+            console.log(event);
             const validationResult =  participantValidation(firstName, secondName, res, event);
             if (!validationResult.correct){
                 setMessage(validationResult.message,"messagePartSpan",validationResult.color);

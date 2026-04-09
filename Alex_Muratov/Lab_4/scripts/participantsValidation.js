@@ -13,7 +13,7 @@ export function participantValidation(firstName, secondName, events, currentEven
         return result;
     }
 
-    if (!checkUniqueParticipant(firstName, secondName, events, currentEvent, result)) {
+    if (!checkUniqueParticipant(firstName, secondName, events, currentEvent.id, result)) {
         return result;
     }
 
